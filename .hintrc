@@ -5,6 +5,7 @@
   "hints": {
     "typescript-config/is-valid": "off",
     "compat-api/css": "off",
-    "disown-opener": "off"
+    "disown-opener": "off",
+    "axe/text-alternatives": "off"
   }
 }
