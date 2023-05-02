@@ -101,11 +101,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid $primaryColor;
+  border: 3px solid $primaryColor;
 
   img {
     border-radius: 50%;
     width: 120px;
+    height: 118px;
     object-fit: contain;
   }
 
@@ -150,3 +151,5 @@ body {
 }
 
 @import "./public.scss";
+@import './avatar_input.scss';
+@import './modal.scss';
