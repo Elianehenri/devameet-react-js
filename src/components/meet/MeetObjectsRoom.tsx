@@ -3,17 +3,33 @@
 import thrashIcon from '../../assets/images/trash_object.svg';
 import rightIcon from '../../assets/images/rotate_right.svg';
 import leftIcon from '../../assets/images/rotate_left.svg';
+import { useEffect } from 'react';
 
 type MeetObjectsRoomType ={
     objects?: [],
     selected?: any,
     setSelected?(s:any):void,
     removeObject?(o:any):void,
+    rotateObject?(o:any, to: string):void,
+    moveSelected?(event:any, selected: any):void,
 }
 
 
-export const MeetObjectsRoom : React.FC<MeetObjectsRoomType> = ({objects, selected, setSelected, removeObject}) => {
 
+export const MeetObjectsRoom : React.FC<MeetObjectsRoomType> = ({objects, selected, setSelected, removeObject,moveSelected}) => {
+
+    useEffect(() => {
+        const doMove = (event : any) => {
+            moveSelected!!(event, selected);
+        }
+
+        document.removeEventListener('keyup', doMove);
+        document.addEventListener('keyup', doMove);
+
+        return () => {
+            document.removeEventListener('keyup', doMove);
+        }
+    }, [selected]);
     const getImageFromObject = (object: any) => {
         if (object && object._id) {
             const path = `../../assets/objects/${object?.type}/${object.name}${object.orientation? "_"+ object.orientation : ''}.png`;
@@ -122,6 +138,7 @@ export const MeetObjectsRoom : React.FC<MeetObjectsRoomType> = ({objects, select
                                 onClick={() => selected?.name === object.name ? setSelected!!(null) : setSelected!!(object)}
                                 src={getImageFromObject(object)}
                                 className={getClassFromObject(object)}
+                                style={{zIndex: object.zIndex}}
                                 />)
                     }
                 </div>
