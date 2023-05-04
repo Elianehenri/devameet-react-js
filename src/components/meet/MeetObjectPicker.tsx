@@ -34,7 +34,7 @@ export const MeetObjectPicker: React.FC<MeetObjectPickerType> = ({ image, label,
             flexStart: asset.flexStart,
             selectMultiple: asset.selectMultiple,
         }
-
+                
         setObject(objectFinal);
     }
 
