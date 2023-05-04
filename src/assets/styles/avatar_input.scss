@@ -1,20 +1,20 @@
-@import './config.scss';
+@import "./config.scss";
 
 .container-upload-image {
-    cursor: pointer;
+  cursor: pointer;
 
-    span{
-        display: none;
-    }
+  span {
+    display: none;
+  }
 
-    &::after{
-        content: url('../images/edit_avatar.svg');
-        width: 48px;
-        height: 48px;
-        position: relative;
-        left: 80px;
-        top: -38px;
-        bottom: 0px;
-        margin: auto;
-    }
+  &::after {
+    content: url("../images/edit_avatar.svg");
+    width: 48px;
+    height: 48px;
+    position: relative;
+    left: 80px;
+    top: -38px;
+    bottom: 0px;
+    margin: auto;
+  }
 }
