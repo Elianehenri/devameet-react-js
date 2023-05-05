@@ -1,22 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
 import { useState } from 'react';
 import linkIcon from '../../assets/images/link_preview.svg';
+import micOnIcon from '../../assets/images/mic_on.svg';
+import micOffIcon from '../../assets/images/mic_off.svg';
 
 
 type RoomObjectsProps = {
     objects: Array<any>,
-    enterRoom():void
+    connectedUsers: Array<any>,
+    me: any,
+    enterRoom():void,
+    toggleMute():void
 }
 
-export const RoomObjects : React.FC<RoomObjectsProps> = ({objects, enterRoom}) =>{
+export const RoomObjects : React.FC<RoomObjectsProps> = ({objects, enterRoom, connectedUsers, me, toggleMute}) =>{
 
     const [objectsWithWidth, setObjectsWithWidth] = useState<Array<any>>([]);
     const mobile = window.innerWidth <= 992;
 
-    const getImageFromObject = (object: any) => {
+    const getImageFromObject = (object: any, isAvatar: boolean) => {
         if (object && object._id) {
-            const path = `../../assets/objects/${object?.type}/${object.name}${object.orientation? "_"+ object.orientation : ''}.png`;
+            const path = `../../assets/objects/${isAvatar ? 'avatar' : object?.type}/${isAvatar ? object.avatar : object.name}${object.orientation? "_"+ object.orientation : ''}.png`;
             const imageUrl = new URL(path, import.meta.url);
+
             if(mobile){
                 let img = new Image();
                 img.onload = () => {
@@ -29,10 +36,11 @@ export const RoomObjects : React.FC<RoomObjectsProps> = ({objects, enterRoom}) =
 
                 img.src = imageUrl.href;
             }
+
             return imageUrl.href;
         }
     }
-    
+
     const getObjectStyle = (object: any) => {
         const style = {zIndex: object.zindex} as any;
 
@@ -45,7 +53,7 @@ export const RoomObjects : React.FC<RoomObjectsProps> = ({objects, enterRoom}) =
         }
 
         return style;
-    } 
+    }
 
     const getClassFromObject = (object: any) => {
         let style = '';
@@ -127,6 +135,20 @@ export const RoomObjects : React.FC<RoomObjectsProps> = ({objects, enterRoom}) =
         return style;
     }
 
+    const getName = (user: any) => {
+        if(user?.name){
+            return user.name.split(' ')[0];
+        }
+        return '';
+    }
+
+    const getMutedClass = (user: any) => {
+        if(user?.muted){
+            return 'muted';
+        }
+        return '';
+    }
+
     return (
         <div className="container-objects">
             <div className="center">
@@ -134,15 +156,29 @@ export const RoomObjects : React.FC<RoomObjectsProps> = ({objects, enterRoom}) =
                     {
                         objects?.map((object: any) => 
                             <img key={object._id} 
-                                src={getImageFromObject(object)}
+                                src={getImageFromObject(object, false)}
                                 className={getClassFromObject(object)}
                                 style={getObjectStyle(object)}
                                 />)
                     }
-                    <div className="preview">
+                    {
+                        connectedUsers?.map((user: any) =>
+                        <div key={user._id} className={'user-avatar ' + getClassFromObject(user)}>
+                            <div className={getMutedClass(user)}>
+                                <span className={getMutedClass(user)}>{getName(user)}</span>
+                            </div>
+                            <img 
+                                src={getImageFromObject(user, true)}
+                                style={getObjectStyle(user)}
+                                />
+                        </div>)
+                    }
+                    { me?.user && me.muted && <img src={micOffIcon} className='audio' onClick={toggleMute}/>}
+                    { me?.user && !me.muted && <img src={micOnIcon} className='audio' onClick={toggleMute}/>}
+                    {(!connectedUsers || connectedUsers?.length === 0) && <div className="preview">
                         <img src={linkIcon} alt="Entrar na sala"/>
                         <button onClick={enterRoom}>Entrar na sala</button>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>
