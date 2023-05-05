@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-extra-non-null-assertion */
 
 import thrashIcon from '../../assets/images/trash_object.svg';
