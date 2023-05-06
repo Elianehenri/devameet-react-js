@@ -7,22 +7,21 @@ import { MeetUserHeader } from "./MeetUserHeader";
 
 export const MeetHome = () => {
 
-
   const navigate = useNavigate();
   const [objects, setObjects] = useState([]);
-  const [link, setLink] = useState("");
+  const [link, setLink] = useState('');
 
   const enterRoom = () => {
-    navigate("/room/" + link);
-  };
+      navigate('/room/'+link);
+  }
 
-  return (
-    <div className="container-principal">
-      <div className="container-meet">
-        <MeetUserHeader />
-        <MeetList setObjects={setObjects} setLink={setLink}/>
+  return(
+      <div className="container-principal">
+          <div className="container-meet">
+              <MeetUserHeader />
+              <MeetList setObjects={setObjects} setLink={setLink}/>
+          </div>
+          {objects?.length > 0 && <RoomObjects objects={objects} enterRoom={enterRoom}/>}
       </div>
-      {objects?.length > 0 && <RoomObjects objects={objects} enterRoom={enterRoom}/>}
-    </div>
   );
-};
+}

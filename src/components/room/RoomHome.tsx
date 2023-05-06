@@ -9,7 +9,7 @@ import { createPeerConnectionContext } from "../../services/WebSocketServices";
 
 import iconUp from '../../assets/images/chevron_up.svg';
 import iconLeft from '../../assets/images/chevron_left.svg';
-import iconRight from '../../assets/images/cheveron_right.svg';
+import iconRight from '../../assets/images/chevron_right.svg';
 import iconDown from '../../assets/images/chevron_down.svg';
 import { Modal } from "react-bootstrap";
 

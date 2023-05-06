@@ -1,6 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-extra-non-null-assertion */
-
-
 import thrashIcon from '../../assets/images/trash_object.svg';
 import rightIcon from '../../assets/images/rotate_right.svg';
 import leftIcon from '../../assets/images/rotate_left.svg';
@@ -158,7 +157,7 @@ export const MeetObjectsRoom : React.FC<MeetObjectsRoomType> = ({objects, select
                     </div>
                     <div className={selected?._id  && (selected?.type === 'chair' || selected?.type === 'couch') ? 'active' : ''}>
                         <img src={rightIcon} onClick={() => selected?._id ? rotateObject!!(selected, 'right') : null }/>
-                    </div>
+                    </div>.
                     <div className={selected?._id  && (selected?.type === 'chair' || selected?.type === 'couch') ? 'active' : ''}>
                         <img src={leftIcon} onClick={() => selected?._id ? rotateObject!!(selected, 'left') : null }/>
                     </div>
