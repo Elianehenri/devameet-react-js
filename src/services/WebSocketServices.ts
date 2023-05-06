@@ -9,7 +9,6 @@ class PeerConnectionSession {
     _room: any;
     _userId: any;
     socket: any;
-
     peerConnections = {} as any;
     senders = [] as any;
     listener = [] as any;

@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-
-
 type ActionHeaderProps = {
     actionCallback():void,
     disabled: boolean
