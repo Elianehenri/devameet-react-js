@@ -44,7 +44,7 @@ https://www.figma.com/file/mIXcu8SJWqi0ylVHtZn89a/Devameet-(Projeto-2023)
 ## Projeto Finalizado
 
 <div align="center" width="100%">
-<img class="logo-nav" height="45%" width="45%" src="src/assets/Sala.png" alt="img tela login">
+<img class="logo-nav" height="65%" width="65%" src="src/assets/Sala.png" alt="img tela login">
 
  </div>
 
