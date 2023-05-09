@@ -9,6 +9,7 @@ import chairIcon from "../../assets/images/chair.svg";
 import couchIcon from "../../assets/images/couch.svg";
 import decorIcon from "../../assets/images/decor.svg";
 import natureIcon from "../../assets/images/nature.svg";
+import animaisIcon from "../../assets/images/animals.svg";
 import objectsJson from "../../assets/objects/objects.json";
 import { MeetObjectsRoom } from "./MeetObjectsRoom";
 import { MeetServices } from "../../services/MeetServices";
@@ -159,6 +160,7 @@ export const MeetEdit = () => {
             const newArray = [...objects];
             setObjects(newArray);
         }
+        
     }
 
     const goBack = () => {
@@ -203,6 +205,7 @@ export const MeetEdit = () => {
                     <MeetObjectPicker image={couchIcon} label="Sofás" asset={objectsJson.couch} selected={selected?.name} setObject={setObject} />
                     <MeetObjectPicker image={decorIcon} label="Decorações" asset={objectsJson.decor} selected={selected?.name} setObject={setObject} />
                     <MeetObjectPicker image={natureIcon} label="Plantas" asset={objectsJson.nature} selected={selected?.name} setObject={setObject} />
+                    <MeetObjectPicker image={animaisIcon} label="Animais" asset={objectsJson.animais} selected={selected?.name} setObject={setObject} />
                 </div>
                 <div className="form">
                     <span onClick={goBack}>Voltar</span>

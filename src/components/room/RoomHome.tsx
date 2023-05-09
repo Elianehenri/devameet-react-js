@@ -234,6 +234,8 @@ export const RoomHome = () => {
                                         <img src={copyIcon} />
                                     </div>
                                     <p style={{ color }}>{name}</p>
+                                    {/* exercicio colocar video */}
+                                    <video  id='localVideoRef' playsInline autoPlay muted />
                                     <audio id='localVideoRef' playsInline autoPlay muted />
                                     {getUsersWithoutMe()?.map((user: any) =>
                                         <audio key={user.clientId} id={user.clientId}
