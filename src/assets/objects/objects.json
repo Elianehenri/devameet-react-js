@@ -116,7 +116,7 @@
   "animais": {
     "path": "animais",
     "selectMultiple": true,
-    "canRotate": true,
+    "canRotate": false,
     "defaultXPosition": 2,
     "defaultYPosition": 3,
     "defaultZIndex": 2,
