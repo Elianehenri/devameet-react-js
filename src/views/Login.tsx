@@ -47,7 +47,7 @@ export const Login = () => {
       return setError("Erro ao efetuar login, tente novamente");
     }
   };
-
+// Retorna mensagem de cadastro
   return (
     <div className="container-public">
       <img src={logo} alt="Logo devameet" className="logo" />
